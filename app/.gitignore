@@ -1,0 +1,8 @@
+*.jpg
+*.bmp
+*.gif
+*.log
+*.html
+**/logs
+*.exe
+*.zip
