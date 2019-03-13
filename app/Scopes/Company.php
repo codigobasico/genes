@@ -65,10 +65,5 @@ class Company implements Scope
         }
 
         return false;
-    } 
-    
-    
-    
-    
-    
+    }
 }

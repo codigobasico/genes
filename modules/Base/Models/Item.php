@@ -79,6 +79,12 @@ class Item extends ModelBase
     {
         return $this->hasMany('App\Models\Income\InvoiceItem');
     }
+    
+    
+    public function unidad()
+    {
+        return $this->belongsTo('Modules\Base\Models\Ums','codum','codum');
+    }
 
     /**
      * Convert sale price to double.

@@ -6,6 +6,7 @@
 **/logs
 *.exe
 *.zip
+*.md
 
 **.jpg
 **.bmp
@@ -15,3 +16,4 @@
 **/logs
 **.exe
 **.zip
+**.md

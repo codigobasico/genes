@@ -33,5 +33,26 @@ class Ums extends ModelBase
 {
     return $this->hasMany('App\Models\Common\Item', 'codum', 'codum');
 }
+
+
+public function conversionesbase()
+{
+    return $this->hasMany('Modules\Base\Models\Conversion', 'codumbase', 'codum');
+}
+
+public function conversionesotro()
+{
+    return $this->hasMany('Modules\Base\Models\Conversion', 'codumotro', 'codum');
+}
+/*
+ * Esta funcion se encarga de decidir si los 
+ * campos sensible speuden ser modificados ; revisa 
+ * Todas las tablas hijas 
+ */
+public function canEdit(){
+    return $this->items()->count()==0 && 
+            $this->conversionesbase()->count()==0 &&
+            $this->conversionesotro()->count()==0 ;
+}
   
 }

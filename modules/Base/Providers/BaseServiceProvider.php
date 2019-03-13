@@ -27,6 +27,14 @@ class BaseServiceProvider extends ServiceProvider
         $this->registerFactories();
         
        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
+    
+       /*
+        * Para extender una funcion de validacion que
+        * permita detectar cambios en un modelo, increiblemente
+        * Laravel ha serpado las validaciones de los modelos
+        */
+      // Validator::extend('has_changed', '\\Modules\\Base\\Validators\\HuboCambio@validateChange');
+       
     }
 
     /**

@@ -13,11 +13,11 @@
     ]) !!}
 
     <div class="box-body">
-        {{ Form::textGroup('codum', trans('general.code'), 'id-card-o') }}        
+        {{ Form::textGroup('codum', trans('general.code'), 'id-card-o',[($ums->canEdit())?'':'disabled']) }}        
 
         {{ Form::textGroup('unidad', trans('general.description')) }}
 
-        {{ Form::textGroup('dimension', trans('units.dimension'), 'money') }}
+        {{ Form::textGroup('dimension', trans('units.dimension'), 'money',[($ums->canEdit())?'':'disabled']) }}
 
     </div>
     <!-- /.box-body -->

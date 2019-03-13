@@ -19,6 +19,8 @@
             <span class="title-filter hidden-xs">{{ trans('general.search') }}:</span>
             {!! Form::text('search', request('search'), ['class' => 'form-control input-filter input-sm', 'placeholder' => trans('general.search_placeholder')]) !!}
             {!! Form::select('categories[]', $categories, request('categories'), ['id' => 'filter-categories', 'class' => 'form-control input-filter input-lg', 'multiple' => 'multiple']) !!}
+             {!! Form::select('unidades[]', $unidades, request('unidades'), ['id' => 'filter-unidades', 'class' => 'form-control input-filter input-lg', 'multiple' => 'multiple']) !!}
+           
             {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' => 'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}
         </div>
         <div class="pull-right">
@@ -35,7 +37,9 @@
                 <thead>
                     <tr>
                         <th class="col-md-1 hidden-xs">{{ trans_choice('general.pictures', 1) }}</th>
+                        <th class="col-md-3">@sortablelink('codigo', trans('general.code'))</th>
                         <th class="col-md-3">@sortablelink('name', trans('general.name'))</th>
+                        <th class="col-md-1">@sortablelink('codum', trans('base::general.item.manufacturer'))</th>
                         <th class="col-md-1">@sortablelink('marca', trans('base::general.item.manufacturer'))</th>
                         <th class="col-md-1">@sortablelink('modelo', trans('base::general.item.model'))</th>
                         
@@ -47,8 +51,11 @@
                 <tbody>
                 @foreach($items as $item)
                     <tr>
+                       
                         <td class="hidden-xs"><img src="{{ $item->picture ? Storage::url($item->picture->id) : asset('public/img/akaunting-logo-green.png') }}" class="img-thumbnail" width="50" alt="{{ $item->name }}"></td>
+                        <td><a href="{{ route('items.edit', $item->id) }}">{{ $item->codigo }}</a></td>
                         <td><a href="{{ route('items.edit', $item->id) }}">{{ $item->name }}</a></td>
+                       <td>{{ $item->codum }} </td>
                         <td>{{ $item->marca }} </td>
                         <td>{{ $item->modelo }} </td>
                         <td class="hidden-xs">{{ $item->category ? $item->category->name : trans('general.na') }}</td>
@@ -104,6 +111,13 @@
         $("#filter-categories").select2({
             placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('general.categories', 1)]) }}"
         });
+        
+         $("#filter-unidades").select2({
+            placeholder: "{{ trans('general.form.select.field', ['field' => trans_choice('base::general.ums.Unit_Measurement', 1)]) }}"
+        });
+        
     });
 </script>
+
+
 @endpush

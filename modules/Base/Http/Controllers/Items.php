@@ -34,14 +34,18 @@ class Items extends Controller
         //$centros = Auth::user()->centros()->get()->sortBy('codcen');
         //holis
        //dd($centros);
-        dd(UserCentro::where('user_id',Auth::getUser()->id)->get()->pluck('codcen')->toArray());
+       /* dd(UserCentro::where('user_id',Auth::getUser()->id)->get()->pluck('codcen')->toArray());
         dd(User::getUser()->centrosAccess);
                     foreach(User::getUser()->centros as $centro){
                         dd($centro->pivot);
                     }
-       dd( User::getUser()->pivot);
+       dd( User::getUser()->pivot);*/
+       // dd(Item::with('category')->collect());
         $items = Item::with('category')->collect();
-                   $unidades = Ums::collect();
+        //echo "holia<br>";
+                 //  $unidades = Ums::All()->pluck('unidad','codum');
+                   //echo "holiaERER<br>";
+        $unidades=Ums::All()->pluck('unidad','codum');     
         $categories = Category::enabled()->orderBy('name')->type('item')->pluck('name', 'id');
 //holasw
         return view('base::items.index', compact('items','unidades', 'categories'));
@@ -175,7 +179,7 @@ class Items extends Controller
         if ($request->file('picture')) {
             $media = $this->getMedia($request->file('picture'), 'items');
 
-            $item->attachMedia($media, 'picture');
+            $item->attachMedia($media, 'pixcture');
         }
 
         $message = trans('messages.success.updated', ['type' => trans_choice('general.items', 1)]);
@@ -257,9 +261,11 @@ class Items extends Controller
      *
      * @return Response
      */
-    public function export()
+    public function pexport()
     {
+        //dd('holis');
         \Excel::create('items', function($excel) {
+            dd($excel);
             $excel->sheet('items', function($sheet) {
                 $sheet->fromModel(Item::filter(request()->input())->get()->makeHidden([
                     'id', 'company_id', 'item_id', 'created_at', 'updated_at', 'deleted_at'
@@ -282,7 +288,7 @@ class Items extends Controller
 
         $autocomplete = Item::autocomplete([
             'name' => $query,
-            'sku' => $query,
+            'marca' => $query,
         ]);
 
         if ($type == 'invoice') {

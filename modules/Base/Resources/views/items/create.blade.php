@@ -138,7 +138,7 @@
         $('#modal-create-category').remove();
 
         $.ajax({
-            url: '{{ url("base/modals/conversiones/create") }}',
+            url: '{{ url("base/modals/categories/create") }}',
             type: 'GET',
             dataType: 'JSON',
             data: {type: 'item'},

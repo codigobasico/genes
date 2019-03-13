@@ -10,7 +10,7 @@
 
                 <div class="row">
                     {{ Form::textGroup('name', trans('general.name'), 'id-card-o') }}
-                    {{ Form::textGroup('prefijo', trans('general.name'), 'id-card-o') }}
+                    {{ Form::textGroup('prefijo', trans('base::general.prefix'), 'id-card-o') }}
 
                     @stack('color_input_start')
                     <div class="form-group col-md-6 required {{ $errors->has('color') ? 'has-error' : ''}}">

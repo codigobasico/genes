@@ -34,7 +34,7 @@ class Ums extends FormRequest
         } 
         
         $reglas= [
-           // 'codum' =>  'required|unique:ums|max:5|string',
+            'codum' =>  'required|unique:ums|max:5|string',
             'unidad' => 'min:4|required|string',
             'dimension' => 'max:1|min:1|required|string|alpha',
             ];

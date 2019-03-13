@@ -33,7 +33,7 @@ class Item extends Request
         $company_id = $this->request->get('company_id');
 
         return [
-            'name' => 'required|string',
+            //'name' => 'sanputa|string',
             'codigo' => 'nullable|string',
             'marca' => 'nullable|string',
             'modelo' => 'nullable|string',

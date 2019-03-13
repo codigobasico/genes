@@ -22,7 +22,6 @@ class Users extends Controller
      */
     public function index()
     {
-       
         $users = User::with('roles')->collect();
 
         $roles = collect(Role::all()->pluck('display_name', 'id'))

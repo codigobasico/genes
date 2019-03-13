@@ -3,7 +3,7 @@
 return [
     'code'=>'Código|Códigos',
     'automatic'=>'Automático',
-    
+    'prefix'=>'Prefijo',
     'item'=>[
         'part_number'=>'Número de parte',
         'manufacturer'=>'Fabricante',
