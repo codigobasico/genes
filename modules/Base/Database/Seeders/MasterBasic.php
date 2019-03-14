@@ -26,6 +26,8 @@ class MasterBasic extends Seeder
         return ['Ums'=>'\\Modules\\Base\\Models\\Ums',
             'Item'=>'\\Modules\\Base\\Models\\Item',
             'Centro'=>'\\Modules\\Base\\Models\\Centro',
+            'Clipro'=>'\\Modules\\Base\\Models\\Clipro',
+            'Persona'=>'\\Modules\\Base\\Models\\Persona',
             ];
     }
     
@@ -88,7 +90,30 @@ class MasterBasic extends Seeder
               ['1504',"Centro Logistico 1504",session('company_id')],
               ['1703',"Centro Logistico 1703",session('company_id')]
           ], 
+            
+            'Clipro'=>[
+              ['700001',"SOLTECNIA SAA ",'20600279825','AV LOS TOPACIOS 345 CALLAO','SOLTECNIA',1,0],
+               ['700002',"GEPROIN SAC ",'20600279834','AV FERROLES 456 CALLAO','GEPROIN',1,0],
+                ['700003',"SERVI NAVALES INDUSTRIALES SRL ",'20456273425','AV LOS FRUTALES 345 CALLAO','SERNAV',1,0],
+          ['700004',"INVERSIONE SDO SANTOS SA ",'20800279455','AV SEPARADORA INDUSTRIAL 345 TP','SANROS',1,0],
+               ['700005',"CASA DE IDEAS SRL ",'20300279831','AV FERROLES 456 CALLAO','CASA IDEAS',1,0],
+                ['700006',"POLIMETALES SA ",'20342353429','AV GRUMETE MEDINA 345 CALLAO','SERNAV',1,0],
+            
+                ],  
+       
+             'Persona'=>[
+              ['60001','RODRIGUEZ ','ROSAS','GABRIEL CARLOS','10','10115533','AV UNIVERSITARIA  345 CALLAO',0],
+               ['60002','ARMAS ','TOLEDO','JOSE RAUL','10','10201403','JR SAN ANTONIO DE ABAN LOS IVOS',0],
+                ['60003','GUTIERREZ ','CAMINOS','GERARDO','10','10455538','JR PASAJE NUEVA ROSITA 345',0],
+          ['60004','PERALTA ','OJEDA','RICARDO EDUARDO','10','09254836','JR ACAPULCO 456 LIMA',0],
+               ['60005','BUENAÑO ','MARTINEZ','JORGE LUIS','10','09254837','JR AYABACA 456 LIMA',0],
+                ['60006','AGUIRRE ','ABANTO','CARLOS VALENTIN','10','08254854','JR LAS ROSAS  456 LIMA',0],
+            
+                ], 
+            
             ];
+        
+        
     } 
     
     private function camposUms(){
@@ -103,6 +128,8 @@ class MasterBasic extends Seeder
             'Ums'=>['codum','unidad','dimension'],
              'Item'=>['codigo','name','marca','modelo','codum','company_id','category_id','esrotativo'],
             'Centro'=>['codcen','nombre','company_id'],
+            'Clipro'=>['codpro','despro','ruc','dir','nombrecomercial','company_id','essocio'],
+   'Persona'=>['codtra','ap','am','nombres','tipodoc','numerodoc','domicilio','user_id'],
         ];
     }
     
@@ -117,6 +144,8 @@ class MasterBasic extends Seeder
     private function buildData($table){
         $campos=[];
         foreach($this->datosBase()[$table] as $clave=>$lista){
+               VAR_DUMP($this->campos()[$table]); ECHO "<BR>";
+               VAR_DUMP($lista);ECHO "<BR>";
                $campos[]=array_combine($this->campos()[$table], $lista);
         }
         return $campos;

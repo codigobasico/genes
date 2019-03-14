@@ -21,7 +21,7 @@ class CompanyNewScope extends Company
          * AQUI LA DIFERENCIA
          * 
          */
-        $skip_tables = [ 'conversiones', 'ums','companies', 'jobs', 'migrations', 'notifications', 'permissions', 'role_user', 'roles', 'sessions', 'users'];
+        $skip_tables = ['personas', 'conversiones', 'ums','companies', 'jobs', 'migrations', 'notifications', 'permissions', 'role_user', 'roles', 'sessions', 'users'];
         /*
          * FIN DE LA DIFERENCIA
          * 

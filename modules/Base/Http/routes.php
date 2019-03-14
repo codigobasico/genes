@@ -17,7 +17,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'base', 'namespace' => 'Modules
       
     Route::resource('items', 'Items');
    Route::post('items/import', 'Items@import')->name('items.import');
-   // Route::get('items/export', 'Items@export')->name('items.export');
+   Route::get('items/export', 'Items@export')->name('items.export');
       
     
     Route::group(['as' => 'modals.',  'prefix' => 'modals'], function () {

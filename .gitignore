@@ -6,6 +6,7 @@
 **/logs
 *.exe
 *.zip
+*.rar
 *.md
 
 **.jpg

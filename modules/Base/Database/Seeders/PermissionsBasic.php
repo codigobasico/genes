@@ -29,7 +29,10 @@ class PermissionsBasic extends Seeder
     {
         return [
               'base-unidades',
-              'base-items'
+              'base-items',
+             // 'base-conversiones',
+            //'base-clipro',
+            //'base-personas',
              ];
     } 
     
